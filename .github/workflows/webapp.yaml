@@ -15,5 +15,6 @@ jobs:
         DOCKER_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
         DOCKER_REGISTRY: ${{ secrets.DOCKERHUB_REGISTRY }}
         DOCKER_REPOSITORY: webapp
-        DOCKER_TAG: $(echo $GITHUB_SHA | cut -c1-7)
-      run: echo $DOCKER_TAG
+      run: |
+        DOCKER_TAG=$(echo $GITHUB_SHA | cut -c1-7)
+	echo $DOCKER_TAG
