@@ -4,7 +4,7 @@
 DOCKER_REGISTRY=notebook.local:5000
 DOCKER_IMAGE=webapp
 DOCKER_TAG=latest
-DOCKER_FILE=Dockerfile.webapp
+DOCKER_FILE=Dockerfile
 DOCKER_URL=http://$DOCKER_REGISTRY/v2/$DOCKER_IMAGE/manifests/$DOCKER_TAG
 DOCKER_LAYER=$(curl -s $DOCKER_URL | jq -r .fsLayers[0].blobSum)
 
