@@ -1,10 +1,7 @@
 FROM ubuntu:latest
 MAINTAINER steve.g.szabo
 
-RUN apt-get update && \
-    apt-get upgrade -y && \
-    apt-get install -y curl wget python3 python3-pip gunicorn && \
-    apt-get clean && \
+RUN apt-get install -y curl wget python3 python3-pip gunicorn && \
     pip3 install flask
 
 ENV WEBAPP_VERSION=1.0.0
