@@ -11,6 +11,8 @@ crictl ps -o json | jq -r .containers[].metadata.name
 crictl exec -it de0e3313483b9 id
 crictl logs -f de0e3313483b9
 
+crictl pull docker.io/steveszabo/webapp
+
 crictl images
 crictl images -o json | jq -r .images[].repoTags[]
 ```
