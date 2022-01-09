@@ -1,4 +1,21 @@
-# docker images
+# containerd
+
+```
+CONTAINER_RUNTIME_ENDPOINT=unix:///run/containerd/containerd.sock
+IMAGE_SERVICE_ENDPOINT=$CONTAINER_RUNTIME_ENDPOINT
+export CONTAINER_RUNTIME_ENDPOINT IMAGE_SERVICE_ENDPOINT
+
+crictl ps
+crictl ps -o json | jq -r .containers[].metadata.name
+
+crictl exec -it de0e3313483b9 id
+crictl logs -f de0e3313483b9
+
+crictl images
+crictl images -o json | jq -r .images[].repoTags[]
+```
+
+# docker
 
 ```
 DOCKER_REGISTRY=notebook.local:5000
