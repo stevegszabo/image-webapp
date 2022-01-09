@@ -5,13 +5,15 @@ CONTAINER_RUNTIME_ENDPOINT=unix:///run/containerd/containerd.sock
 IMAGE_SERVICE_ENDPOINT=$CONTAINER_RUNTIME_ENDPOINT
 export CONTAINER_RUNTIME_ENDPOINT IMAGE_SERVICE_ENDPOINT
 
+crictl info | jq -r .
+
 crictl ps
 crictl ps -o json | jq -r .containers[].metadata.name
 
 crictl exec -it de0e3313483b9 id
 crictl logs -f de0e3313483b9
 
-crictl pull docker.io/steveszabo/webapp
+crictl pull docker.io/steveszabo/webapp:289cf46
 
 crictl images
 crictl images -o json | jq -r .images[].repoTags[]
