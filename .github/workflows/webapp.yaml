@@ -16,3 +16,7 @@ jobs:
         DOCKER_REGISTRY: ${{ secrets.DOCKERHUB_REGISTRY }}
         DOCKER_REPOSITORY: webapp
       run: ./build.sh
+    - uses: docker/build-push-action@v2
+      with:
+        push: true
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/webapp:$GITHUB_SHA
