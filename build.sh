@@ -6,10 +6,9 @@ DOCKER_SHA=${GITHUB_SHA=1234567}
 DOCKER_TAG=$(echo $DOCKER_SHA | cut -c1-7)
 DOCKER_FILE=Dockerfile
 
-cat $DOCKER_FILE
+pwd
+ls -la
 
 sed -i "s/WEBAPP_VERSION=.*/WEBAPP_VERSION=$DOCKER_TAG/g" $DOCKER_FILE
-
-cat $DOCKER_FILE
 
 exit 0
