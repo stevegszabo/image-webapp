@@ -15,5 +15,5 @@ jobs:
     - uses: docker/build-push-action@v2
       with:
         push: true
-        context: "{{defaultContext}}/bad"
+        context: .
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.workflow }}:${{ github.sha }}
