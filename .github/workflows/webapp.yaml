@@ -13,6 +13,7 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }}
         registry: ${{ secrets.DOCKERHUB_REGISTRY }}
     - run: ./build.sh
+    - run: pwd && ls -la
     - uses: docker/build-push-action@v2
       with:
         push: true
