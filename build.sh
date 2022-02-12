@@ -8,4 +8,6 @@ DOCKER_FILE=Dockerfile
 
 sed -i "s/WEBAPP_VERSION=.*/WEBAPP_VERSION=$DOCKER_TAG/g" $DOCKER_FILE
 
+cat $DOCKER_FILE
+
 exit 0

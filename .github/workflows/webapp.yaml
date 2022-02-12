@@ -6,6 +6,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - run: ./build.sh
+    - run: ./build.sh
     - uses: docker/login-action@v1
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
