@@ -11,6 +11,12 @@ jobs:
         DOCKER_REGISTRY: ${{ secrets.DOCKERHUB_REGISTRY }}
         DOCKER_REPOSITORY: webapp
       run: ./build.sh
+    - shell: bash
+      env:
+        DOCKER_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+        DOCKER_REGISTRY: ${{ secrets.DOCKERHUB_REGISTRY }}
+        DOCKER_REPOSITORY: webapp
+      run: ./build.sh
     - uses: docker/login-action@v1
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
