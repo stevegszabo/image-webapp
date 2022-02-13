@@ -1,7 +1,7 @@
 name: webapp
 on:
   push:
-    branches: ['master-bad']
+    branches: ['master', 'release']
 jobs:
   docker-build-and-push:
     runs-on: ubuntu-latest
