@@ -15,9 +15,8 @@ jobs:
         registry: ${{ secrets.DOCKERHUB_REGISTRY }}
     - run: echo "DOCKER_TAG=$(echo $GITHUB_SHA | cut -c1-7)" >> $GITHUB_ENV
     - run: bash update-docker.sh
-    - run: ps -ef && ls -ld ~ && ls -la ~ && find ~/.docker -ls && cat ~/.docker/config.json
-#    - uses: docker/build-push-action@v2
-#      with:
-#        push: true
-#        context: .
-#        tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.workflow }}:${{ env.DOCKER_TAG }}
+    - uses: docker/build-push-action@v2
+      with:
+        push: true
+        context: .
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.workflow }}:${{ env.DOCKER_TAG }}
