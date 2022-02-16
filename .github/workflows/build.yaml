@@ -1,6 +1,5 @@
 name: webapp
 on:
-  workflow_call:
   push:
     branches: ['master', 'release']
 jobs:
