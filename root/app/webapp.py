@@ -16,9 +16,11 @@ def indexpage():
     :return: String
     """
     version = os.getenv('WEBAPP_VERSION', 'v0.0.0')
+    dbuser = os.getenv('POSTGRES_USER', 'POSTGRES_USER')
+    dbpassword = os.getenv('POSTGRES_PASSWORD', 'POSTGRES_PASSWORD')
     hostname = socket.gethostname()
     address = socket.gethostbyname(hostname)
-    return "{}:{}:{}\n".format(version, hostname, address)
+    return "{}:{}:{}:{}:{}\n".format(version, hostname, address, dbuser, dbpassword)
 
 
 if __name__ == "__main__":
