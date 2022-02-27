@@ -15,7 +15,7 @@ def indexpage():
     Sample index page
     :return: String
     """
-    version = os.getenv('WEBAPP_VERSION', 'v0.0.0')
+    version = os.getenv('WEBAPP_VERSION', 'WEBAPP_VERSION')
     dbuser = os.getenv('POSTGRES_USER', 'POSTGRES_USER')
     dbpassword = os.getenv('POSTGRES_PASSWORD', 'POSTGRES_PASSWORD')
     hostname = socket.gethostname()
