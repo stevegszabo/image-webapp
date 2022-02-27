@@ -19,5 +19,5 @@ jobs:
         push: true
         context: .
         build-args: |
-          WEBAPP_VERSION={{ env.DOCKER_TAG }}
+          WEBAPP_VERSION=${{ env.DOCKER_TAG }}
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.workflow }}:${{ env.DOCKER_TAG }}
