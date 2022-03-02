@@ -7,6 +7,9 @@ import socket
 from flask import Flask
 
 GAPPLICATION = Flask(__name__)
+GVERSION = os.getenv('WEBAPP_VERSION', 'WEBAPP_VERSION')
+GDBUSER = os.getenv('POSTGRES_USER', 'POSTGRES_USER')
+GDBPASSWORD = os.getenv('POSTGRES_PASSWORD', 'POSTGRES_PASSWORD')
 
 
 @GAPPLICATION.route("/")
@@ -15,12 +18,10 @@ def indexpage():
     Sample index page
     :return: String
     """
-    version = os.getenv('WEBAPP_VERSION', 'WEBAPP_VERSION')
-    dbuser = os.getenv('POSTGRES_USER', 'POSTGRES_USER')
-    dbpassword = os.getenv('POSTGRES_PASSWORD', 'POSTGRES_PASSWORD')
     hostname = socket.gethostname()
     address = socket.gethostbyname(hostname)
-    return "{}:{}:{}:{}:{}\n".format(version, hostname, address, dbuser, dbpassword)
+    result = f'{hostname}[{address}]:{GVERSION}:{GDBUSER}:{GDBPASSWORD}\n'
+    return result
 
 
 if __name__ == "__main__":
