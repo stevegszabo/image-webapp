@@ -20,4 +20,8 @@ jobs:
         context: .
         build-args: |
           WEBAPP_VERSION=${{ env.WEBAPP_VERSION }}
+          WEBAPP_ADDRESS=0.0.0.0
+          WEBAPP_PORT=8080
+          WEBAPP_LOG_LEVEL=info
+          WEBAPP_APPLICATION=app.webapp:GAPPLICATION
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.workflow }}:${{ env.WEBAPP_VERSION }}
