@@ -24,4 +24,5 @@ jobs:
           WEBAPP_PORT=8080
           WEBAPP_LOG_LEVEL=info
           WEBAPP_APPLICATION=app.webapp:GAPPLICATION
+          WEBAPP_PROFILE=/vault/secrets/config
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.workflow }}:${{ env.WEBAPP_VERSION }}
