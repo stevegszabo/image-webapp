@@ -1,10 +1,23 @@
 name: webapp
 on:
-  push:
-    branches: ['master', 'release']
   workflow_call:
     inputs:
-      webapp_version:
+      webapp_address:
+        description: 'The Flask application bind address'
+        default: '0.0.0.0'
+        required: false
+        type: string
+      webapp_port:
+        description: 'The Flask application bind port'
+        default: '8080'
+        required: false
+        type: string
+      webapp_log_level:
+        description: 'The Flask application log level'
+        default: 'debug'
+        required: false
+        type: string
+      webapp_application:
         description: 'The Flask application path'
         default: 'app.webapp:GAPPLICATION'
         required: false
@@ -32,9 +45,9 @@ jobs:
         context: .
         build-args: |
           WEBAPP_VERSION=${{ env.WEBAPP_VERSION }}
-          WEBAPP_ADDRESS=0.0.0.0
-          WEBAPP_PORT=8080
-          WEBAPP_LOG_LEVEL=info
-          WEBAPP_APPLICATION=${{ inputs.webapp_version }}
+          WEBAPP_ADDRESS=${{ inputs.webapp_address }}
+          WEBAPP_PORT=${{ inputs.webapp_port }}
+          WEBAPP_LOG_LEVEL=${{ inputs.webapp_log_level }}
+          WEBAPP_APPLICATION=${{ inputs.webapp_application }}
           WEBAPP_PROFILE=${{ inputs.webapp_profile }}
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.workflow }}:${{ env.WEBAPP_VERSION }}
