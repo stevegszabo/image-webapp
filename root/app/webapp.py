@@ -10,6 +10,7 @@ GAPPLICATION = Flask(__name__)
 GVERSION = os.getenv('WEBAPP_VERSION', 'WEBAPP_VERSION')
 GDBUSER = os.getenv('POSTGRES_USER', 'POSTGRES_USER')
 GDBPASSWORD = os.getenv('POSTGRES_PASSWORD', 'POSTGRES_PASSWORD')
+GDBINSTANCE = os.getenv('WEBAPP_DATABASE', 'WEBAPP_DATABASE')
 
 
 @GAPPLICATION.route("/")
@@ -20,7 +21,7 @@ def indexpage():
     """
     hostname = socket.gethostname()
     address = socket.gethostbyname(hostname)
-    result = f'{hostname}[{address}]:{GVERSION}:{GDBUSER}:{GDBPASSWORD}\n'
+    result = f'{hostname}[{address}]:{GVERSION}:{GDBINSTANCE}:{GDBUSER}:{GDBPASSWORD}\n'
     return result
 
 

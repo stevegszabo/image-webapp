@@ -11,6 +11,7 @@ env:
 jobs:
   docker-build-and-push:
     runs-on: ubuntu-latest
+    environment: ENG
     steps:
     - uses: actions/checkout@v2
     - uses: docker/setup-buildx-action@v1
@@ -31,4 +32,5 @@ jobs:
           WEBAPP_LOG_LEVEL=${{ env.WEBAPP_LOG_LEVEL }}
           WEBAPP_APPLICATION=${{ env.WEBAPP_APPLICATION }}
           WEBAPP_PROFILE=${{ env.WEBAPP_PROFILE }}
+          WEBAPP_DATABASE=${{ env.WEBAPP_DATABASE }}
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.workflow }}:${{ env.WEBAPP_VERSION }}
