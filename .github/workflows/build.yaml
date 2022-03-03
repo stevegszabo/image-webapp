@@ -1,7 +1,6 @@
 name: webapp
 on:
   workflow_dispatch:
-  workflow_call:
     inputs:
       webapp_address:
         description: 'The Flask application bind address'
