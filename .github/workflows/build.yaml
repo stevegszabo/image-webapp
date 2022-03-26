@@ -8,11 +8,11 @@ env:
   WEBAPP_LOG_LEVEL: debug
   WEBAPP_APPLICATION: app.webapp:GAPPLICATION
   WEBAPP_PROFILE: /vault/secrets/config
+  WEBAPP_DATABASE: peaches
 jobs:
   docker-build-and-push:
     runs-on: ubuntu-latest
-    environment:
-      name: ENG
+    environment: ENG
     steps:
     - uses: actions/checkout@v2
     - uses: docker/setup-buildx-action@v1
