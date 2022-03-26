@@ -8,7 +8,6 @@ env:
   WEBAPP_LOG_LEVEL: debug
   WEBAPP_APPLICATION: app.webapp:GAPPLICATION
   WEBAPP_PROFILE: /vault/secrets/config
-  WEBAPP_DATABASE: peaches101
 jobs:
   docker-build-and-push:
     runs-on: ubuntu-latest
@@ -33,5 +32,5 @@ jobs:
           WEBAPP_LOG_LEVEL=${{ env.WEBAPP_LOG_LEVEL }}
           WEBAPP_APPLICATION=${{ env.WEBAPP_APPLICATION }}
           WEBAPP_PROFILE=${{ env.WEBAPP_PROFILE }}
-          WEBAPP_DATABASE=${{ env.WEBAPP_DATABASE_BAD }}
+          WEBAPP_DATABASE=${{ secrets.WEBAPP_DATABASE }}
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.workflow }}:${{ env.WEBAPP_VERSION }}
