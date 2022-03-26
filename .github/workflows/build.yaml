@@ -33,5 +33,5 @@ jobs:
           WEBAPP_LOG_LEVEL=${{ env.WEBAPP_LOG_LEVEL }}
           WEBAPP_APPLICATION=${{ env.WEBAPP_APPLICATION }}
           WEBAPP_PROFILE=${{ env.WEBAPP_PROFILE }}
-          WEBAPP_DATABASE=${{ env.WEBAPP_DATABASE }}
+          WEBAPP_DATABASE=${{ env.WEBAPP_DATABASE_BAD }}
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.workflow }}:${{ env.WEBAPP_VERSION }}
