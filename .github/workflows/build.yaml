@@ -8,7 +8,7 @@ env:
   WEBAPP_LOG_LEVEL: debug
   WEBAPP_APPLICATION: app.webapp:GAPPLICATION
   WEBAPP_PROFILE: /vault/secrets/config
-  WEBAPP_DATABASE: peaches
+  WEBAPP_DATABASE: peaches101
 jobs:
   docker-build-and-push:
     runs-on: ubuntu-latest
