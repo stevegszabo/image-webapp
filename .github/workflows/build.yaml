@@ -5,13 +5,13 @@ on:
 env:
   WEBAPP_ADDRESS: 0.0.0.0
   WEBAPP_PORT: 8080
-  WEBAPP_LOG_LEVEL: info
+  WEBAPP_LOG_LEVEL: debug
   WEBAPP_APPLICATION: app.webapp:GAPPLICATION
   WEBAPP_PROFILE: /vault/secrets/config
 jobs:
   docker-build-and-push:
     runs-on: ubuntu-latest
-    environment: ENGINEERING
+    environment: DEVELOPMENT
     steps:
     - uses: actions/checkout@v2
     - uses: docker/setup-buildx-action@v1
