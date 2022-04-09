@@ -11,7 +11,7 @@ env:
 jobs:
   docker-build-and-push:
     runs-on: ubuntu-latest
-    environment: DEVELOPMENT
+    environment: TESTING
     steps:
     - uses: actions/checkout@v2
     - uses: docker/setup-buildx-action@v1
