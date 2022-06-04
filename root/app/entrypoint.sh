@@ -12,7 +12,7 @@ WEBAPP_DATABASE=${WEBAPP_DATABASE-none}
 export WEBAPP_PROFILE WEBAPP_VERSION WEBAPP_ADDRESS WEBAPP_PORT WEBAPP_LOG_LEVEL WEBAPP_APPLICATION WEBAPP_DATABASE
 
 # shellcheck source=/vault/secrets/config
-source "$WEBAPP_PROFILE" || exit 1
+[-f $WEBAPP_PROFILE] && source "$WEBAPP_PROFILE" || exit 1
 
 gunicorn3 --bind "$WEBAPP_ADDRESS:$WEBAPP_PORT" "$WEBAPP_APPLICATION" --log-level "$WEBAPP_LOG_LEVEL" --access-logfile - --error-logfile -
 
