@@ -24,6 +24,7 @@ jobs:
     - uses: docker/build-push-action@v2
       with:
         push: true
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.workflow }}:${{ env.WEBAPP_VERSION }}
         context: .
         build-args: |
           WEBAPP_VERSION=${{ env.WEBAPP_VERSION }}
@@ -33,4 +34,3 @@ jobs:
           WEBAPP_APPLICATION=${{ env.WEBAPP_APPLICATION }}
           WEBAPP_PROFILE=${{ env.WEBAPP_PROFILE }}
           WEBAPP_DATABASE=${{ secrets.WEBAPP_DATABASE }}
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.workflow }}:${{ env.WEBAPP_VERSION }}
