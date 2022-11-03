@@ -1,4 +1,4 @@
-name: webapp
+name: build
 on:
   push:
     branches: ['ENGINEERING']
