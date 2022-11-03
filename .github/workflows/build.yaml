@@ -10,7 +10,7 @@ env:
   WEBAPP_PROFILE: /vault/secrets/config
   WEBAPP_ENVIRON: ${{ github.ref_name }}
 jobs:
-  docker-build-and-push:
+  build:
     runs-on: ubuntu-latest
     environment: ${{ github.ref_name }}
     steps:
