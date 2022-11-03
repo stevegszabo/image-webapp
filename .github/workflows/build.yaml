@@ -8,11 +8,11 @@ env:
   WEBAPP_LOG_LEVEL: info
   WEBAPP_APPLICATION: app.webapp:GAPPLICATION
   WEBAPP_PROFILE: /vault/secrets/config
-  WEBAPP_ENVIRON: ENGINEERING
+  WEBAPP_ENVIRON: eng
 jobs:
   docker-build-and-push:
     runs-on: ubuntu-latest
-    environment: ${{ env.WEBAPP_ENVIRON }}
+    environment: ENGINEERING
     steps:
     - uses: actions/checkout@v2
     - uses: docker/setup-buildx-action@v1
