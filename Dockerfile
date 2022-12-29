@@ -2,6 +2,8 @@ FROM ubuntu:latest
 
 MAINTAINER steve.g.szabo
 
+ENV DEBIAN_FRONTEND=noninteractive
+
 ARG WEBAPP_VERSION
 ARG WEBAPP_ADDRESS
 ARG WEBAPP_PORT
