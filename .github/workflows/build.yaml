@@ -23,7 +23,7 @@ jobs:
         registry: ${{ secrets.DOCKERHUB_REGISTRY }}
     - run: echo "WEBAPP_VERSION=$(echo $GITHUB_SHA | cut -c1-7)" >> $GITHUB_ENV
     - run: echo "WEBAPP_REPO=$(echo ${{ env.WEBAPP_ENVIRON }} | tr '[A-Z]' '[a-z]')" >> $GITHUB_ENV
-    - uses: docker/build-push-action@v2
+    - uses: docker/build-push-action@v4
       with:
         push: true
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.workflow }}-${{ env.WEBAPP_REPO }}:${{ env.WEBAPP_VERSION }}
