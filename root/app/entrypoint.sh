@@ -3,6 +3,10 @@
 set -o errexit
 set -o pipefail
 
+TRAP_SHUTDOWN=0
+
+trap 'TRAP_SHUTDOWN=1' SIGINT SIGTERM
+
 WEBAPP_PROFILE=${WEBAPP_PROFILE-/vault/secrets/config}
 WEBAPP_VERSION=${WEBAPP_VERSION-0000000}
 WEBAPP_ADDRESS=${WEBAPP_ADDRESS-0.0.0.0}
@@ -15,14 +19,14 @@ export WEBAPP_PROFILE WEBAPP_VERSION WEBAPP_ADDRESS WEBAPP_PORT WEBAPP_LOG_LEVEL
 
 [ -f $WEBAPP_PROFILE ] && source $WEBAPP_PROFILE
 
-trap 'echo trap' SIGINT SIGTERM
-
 for ((INDEX=1; INDEX<=WEBAPP_CHILDREN; INDEX++));
 do
     gunicorn3 --bind $WEBAPP_ADDRESS:$WEBAPP_PORT --log-level $WEBAPP_LOG_LEVEL --access-logfile - --error-logfile - $WEBAPP_APPLICATION &
     export WEBAPP_PORT=$((WEBAPP_PORT+1))
 done
 
-wait
+while [ $TRAP_SHUTDOWN -eq 0 ]; do sleep 1; done
+
+kill -TERM $(jobs -p)
 
 exit $?
