@@ -29,4 +29,4 @@ while [ $TRAP_SHUTDOWN -eq 0 ]; do sleep 1; done
 
 kill -TERM $(jobs -p)
 
-exit $?
+exit 0
