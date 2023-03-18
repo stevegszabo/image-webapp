@@ -18,7 +18,7 @@ export WEBAPP_PROFILE WEBAPP_VERSION WEBAPP_ADDRESS WEBAPP_PORT WEBAPP_LOG_LEVEL
 for ((INDEX=1; INDEX<=WEBAPP_CHILDREN; INDEX++));
 do
     gunicorn3 --bind $WEBAPP_ADDRESS:$WEBAPP_PORT --log-level $WEBAPP_LOG_LEVEL --access-logfile - --error-logfile - $WEBAPP_APPLICATION
-    export WEBAPP_PORT=((WEBAPP_PORT+1))
+    export WEBAPP_PORT=$((WEBAPP_PORT+1))
 done
 
 exit $?
