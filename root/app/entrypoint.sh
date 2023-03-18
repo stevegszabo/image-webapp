@@ -21,4 +21,6 @@ do
     export WEBAPP_PORT=$((WEBAPP_PORT+1))
 done
 
+wait
+
 exit $?
