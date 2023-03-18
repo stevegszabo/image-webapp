@@ -17,6 +17,6 @@ if [ -f "$WEBAPP_PROFILE" ]; then
     source "$WEBAPP_PROFILE" || exit 1
 fi
 
-gunicorn3 --bind "$WEBAPP_ADDRESS:$WEBAPP_PORT" "$WEBAPP_APPLICATION" --log-level "$WEBAPP_LOG_LEVEL" --access-logfile - --error-logfile -
+gunicorn3 --bind $WEBAPP_ADDRESS:$WEBAPP_PORT --log-level $WEBAPP_LOG_LEVEL --access-logfile - --error-logfile - $WEBAPP_APPLICATION
 
 exit $?
