@@ -29,4 +29,4 @@ COPY root/app /app
 RUN chown -R www-data:www-data /app
 EXPOSE $WEBAPP_PORT
 USER www-data
-ENTRYPOINT ["/app/entrypoint.sh"]
+ENTRYPOINT ["/bin/bash", "/app/entrypoint.sh"]
