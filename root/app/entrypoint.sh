@@ -20,6 +20,8 @@ export WEBAPP_PROFILE WEBAPP_VERSION WEBAPP_ADDRESS WEBAPP_PORT WEBAPP_LOG_LEVEL
 
 [ -f $WEBAPP_PROFILE ] && source $WEBAPP_PROFILE
 
+[ ! -z "${WEBAPP_CHILDREN##*[!0-9]*}" ] || exit 1
+
 for ((INDEX=1; INDEX<=WEBAPP_CHILDREN; INDEX++));
 do
     gunicorn3 --bind $WEBAPP_ADDRESS:$WEBAPP_PORT --log-level $WEBAPP_LOG_LEVEL --access-logfile - --error-logfile - $WEBAPP_APPLICATION &
