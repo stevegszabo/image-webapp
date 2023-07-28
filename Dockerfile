@@ -12,7 +12,7 @@ ARG WEBAPP_DATABASE
 
 RUN apt-get update && \
     apt-get upgrade -y && \
-    apt-get install -y curl wget python3 python3-pip gunicorn && \
+    apt-get install -y curl wget python3 python3-pip gunicorn iproute2 && \
     apt-get clean
 
 RUN pip3 install flask
