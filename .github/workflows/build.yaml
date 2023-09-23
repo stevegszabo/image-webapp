@@ -1,14 +1,11 @@
 name: webapp
-on:
-  push:
-    branches: ['ENGINEERING', 'TESTING', 'PRODUCTION']
+on: [push]
 env:
   WEBAPP_ADDRESS: 0.0.0.0
   WEBAPP_PORT: 8080
   WEBAPP_LOG_LEVEL: debug
   WEBAPP_APPLICATION: app.webapp:GAPPLICATION
   WEBAPP_PROFILE: /vault/secrets/config
-  WEBAPP_ENVIRON: ${{ github.ref_name }}
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -22,11 +19,10 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }}
         registry: ${{ secrets.DOCKERHUB_REGISTRY }}
     - run: echo "WEBAPP_VERSION=$(echo $GITHUB_SHA | cut -c1-7)" >> $GITHUB_ENV
-    - run: echo "WEBAPP_REPO=$(echo ${{ env.WEBAPP_ENVIRON }} | tr '[A-Z]' '[a-z]')" >> $GITHUB_ENV
     - uses: docker/build-push-action@v4
       with:
         push: true
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.workflow }}-${{ env.WEBAPP_REPO }}:${{ env.WEBAPP_VERSION }}
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.workflow }}:${{ env.WEBAPP_VERSION }}
         context: .
         build-args: |
           WEBAPP_VERSION=${{ env.WEBAPP_VERSION }}
