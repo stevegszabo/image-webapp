@@ -12,7 +12,7 @@ ARG WEBAPP_DATABASE
 
 RUN apt-get update && \
     apt-get upgrade -y && \
-    apt-get install -y curl wget python3 python3-pip gunicorn && \
+    apt-get install -y curl wget python3 python3-pip gunicorn iproute2 lsof && \
     apt-get clean
 
 RUN pip3 install flask
@@ -29,4 +29,4 @@ COPY root/app /app
 RUN chown -R www-data:www-data /app
 EXPOSE $WEBAPP_PORT
 USER www-data
-ENTRYPOINT ["/app/entrypoint.sh"]
+ENTRYPOINT ["/bin/bash", "/app/entrypoint.sh"]
