@@ -24,7 +24,7 @@ def indexpage():
     """
     hostname = socket.gethostname()
     address = socket.gethostbyname(hostname)
-    result = f'{hostname}[{address}]:{GVERSION}:{GDBINSTANCE}:{GDBUSER}:{GDBPASSWORD}\n'
+    result = f'{hostname}:{address}:{GVERSION}:{GDBINSTANCE}:{GDBUSER}:{GDBPASSWORD}\n'
     return result
 
 
