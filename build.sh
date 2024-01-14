@@ -19,4 +19,6 @@ docker build \
 --build-arg WEBAPP_DATABASE=database \
 -t $GOOGLE_REGISTRY/webapp:$GOOGLE_IMAGE_TAG .
 
+docker push $GOOGLE_REGISTRY/webapp:$GOOGLE_IMAGE_TAG
+
 exit 0
