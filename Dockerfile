@@ -16,16 +16,18 @@ ENV WEBAPP_LOG_LEVEL=$WEBAPP_LOG_LEVEL
 ENV WEBAPP_APPLICATION=$WEBAPP_APPLICATION
 ENV WEBAPP_PROFILE=$WEBAPP_PROFILE
 ENV WEBAPP_DATABASE=$WEBAPP_DATABASE
+ENV PATH=$PATH:/app/.local/bin
 
 RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y curl wget python3 python3-pip gunicorn iproute2 lsof netcat-openbsd && \
     apt-get clean
 
-RUN pip3 install flask
-
 COPY root/app /app
+RUN usermod -d /app www-data
 RUN chown -R www-data:www-data /app
-EXPOSE $WEBAPP_PORT
+
 USER www-data
+RUN pip3 install --user --requirement=/app/requirements
+EXPOSE $WEBAPP_PORT
 ENTRYPOINT ["/bin/bash", "/app/entrypoint.sh"]
