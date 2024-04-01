@@ -18,6 +18,7 @@ ENV WEBAPP_PROFILE=$WEBAPP_PROFILE
 ENV WEBAPP_DATABASE=$WEBAPP_DATABASE
 ENV PATH=$PATH:/app/.local/bin
 
+USER root
 RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y curl wget python3 python3-pip gunicorn iproute2 lsof netcat-openbsd && \
