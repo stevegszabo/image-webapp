@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:22.04
 
 ARG WEBAPP_VERSION
 ARG WEBAPP_ADDRESS
