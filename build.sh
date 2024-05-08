@@ -17,6 +17,6 @@ docker build \
 --build-arg WEBAPP_DATABASE=database \
 -t $GOOGLE_IMAGE .
 
-docker push $GOOGLE_IMAGE
+echo docker push $GOOGLE_IMAGE
 
 exit 0
