@@ -14,6 +14,8 @@ export WEBAPP_PROFILE WEBAPP_VERSION WEBAPP_ADDRESS WEBAPP_PORT WEBAPP_LOG_LEVEL
 
 [ -f $WEBAPP_PROFILE ] && source $WEBAPP_PROFILE
 
-gunicorn3 --bind $WEBAPP_ADDRESS:$WEBAPP_PORT --log-level $WEBAPP_LOG_LEVEL --access-logfile - --error-logfile - $WEBAPP_APPLICATION
+source /app/virtual/bin/activate
+
+gunicorn --bind $WEBAPP_ADDRESS:$WEBAPP_PORT --log-level $WEBAPP_LOG_LEVEL --access-logfile - --error-logfile - $WEBAPP_APPLICATION
 
 exit $?
