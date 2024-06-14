@@ -3,7 +3,7 @@
 set -o errexit
 set -o pipefail
 
-GOOGLE_REGISTRY=us-east1-docker.pkg.dev/engineering-line-01-qum4gi/gar-engineering-01
+GOOGLE_REGISTRY=us-east1-docker.pkg.dev/eng-lob-01-l2gp4k/gar-01
 GOOGLE_IMAGE_TAG=${1-v1.0.1}
 GOOGLE_IMAGE=$GOOGLE_REGISTRY/webapp:$GOOGLE_IMAGE_TAG
 
