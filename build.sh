@@ -13,7 +13,6 @@ docker build \
 --build-arg WEBAPP_PORT=8080 \
 --build-arg WEBAPP_LOG_LEVEL=info \
 --build-arg WEBAPP_APPLICATION=app.webapp:GAPPLICATION \
---build-arg WEBAPP_PROFILE=/vault/secrets/config \
 --build-arg WEBAPP_DATABASE=database \
 -t $GOOGLE_IMAGE .
 
