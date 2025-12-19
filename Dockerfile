@@ -21,7 +21,7 @@ ENV PATH=$PATH:/app/.local/bin
 USER root
 RUN apt-get update && \
     apt-get upgrade -y && \
-    apt-get install -y curl wget python3 python3-pip python3.10-venv iproute2 lsof netcat-openbsd && \
+    apt-get install -y curl wget yq python3 python3-pip python3.10-venv iproute2 lsof netcat-openbsd && \
     apt-get clean
 
 COPY root/app /app

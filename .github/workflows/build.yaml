@@ -3,7 +3,7 @@ on: [push]
 env:
   WEBAPP_ADDRESS: 0.0.0.0
   WEBAPP_PORT: 8080
-  WEBAPP_LOG_LEVEL: debug
+  WEBAPP_LOG_LEVEL: info
   WEBAPP_APPLICATION: app.webapp:GAPPLICATION
 jobs:
   build:
