@@ -2,11 +2,6 @@ name: webapp
 on:
   push:
     branches: ["ENGINEERING"]
-env:
-  WEBAPP_ADDRESS: 0.0.0.0
-  WEBAPP_PORT: 8080
-  WEBAPP_LOG_LEVEL: info
-  WEBAPP_APPLICATION: app.webapp:GAPPLICATION
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -27,8 +22,8 @@ jobs:
         context: .
         build-args: |
           WEBAPP_VERSION=${{ env.WEBAPP_VERSION }}
-          WEBAPP_ADDRESS=${{ env.WEBAPP_ADDRESS }}
-          WEBAPP_PORT=${{ env.WEBAPP_PORT }}
-          WEBAPP_LOG_LEVEL=${{ env.WEBAPP_LOG_LEVEL }}
-          WEBAPP_APPLICATION=${{ env.WEBAPP_APPLICATION }}
-          WEBAPP_DATABASE=${{ secrets.WEBAPP_DATABASE }}
+          WEBAPP_ADDRESS=0.0.0.0
+          WEBAPP_PORT=8080
+          WEBAPP_LOG_LEVEL=info
+          WEBAPP_APPLICATION=app.webapp:GAPPLICATION
+          WEBAPP_DATABASE=santacruz
