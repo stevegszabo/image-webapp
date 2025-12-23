@@ -3,9 +3,10 @@
 set -o errexit
 set -o pipefail
 
-GOOGLE_REGISTRY=us-east1-docker.pkg.dev/eng-bus-01-faskqs/gar-01
-GOOGLE_IMAGE_TAG=${1:-v1.0.1}
-GOOGLE_IMAGE=$GOOGLE_REGISTRY/steveszabo/webapp:$GOOGLE_IMAGE_TAG
+GOOGLE_REGISTRY=northamerica-northeast2-docker.pkg.dev/sandbox-01-k61cps/gar-01
+GOOGLE_IMAGE_REPO=${1-steveszabo/webapp}
+GOOGLE_IMAGE_TAG=${2-v1.1.2}
+GOOGLE_IMAGE=$GOOGLE_REGISTRY/$GOOGLE_IMAGE_REPO:$GOOGLE_IMAGE_TAG
 
 docker build \
 --build-arg WEBAPP_VERSION=$GOOGLE_IMAGE_TAG \
