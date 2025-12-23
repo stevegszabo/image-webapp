@@ -1,5 +1,7 @@
 name: webapp
-on: [push]
+on:
+  push:
+    branches: ["ENGINEERING"]
 env:
   WEBAPP_ADDRESS: 0.0.0.0
   WEBAPP_PORT: 8080
