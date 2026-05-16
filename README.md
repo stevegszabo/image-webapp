@@ -5,7 +5,7 @@ CONTAINER_RUNTIME_ENDPOINT=unix:///run/containerd/containerd.sock
 IMAGE_SERVICE_ENDPOINT=$CONTAINER_RUNTIME_ENDPOINT
 export CONTAINER_RUNTIME_ENDPOINT IMAGE_SERVICE_ENDPOINT
 
-cat <<EOF > /etc/crictl.yaml
+cat > /etc/crictl.yaml <<EOF
 runtime-endpoint: unix:///run/containerd/containerd.sock
 image-endpoint: unix:///run/containerd/containerd.sock
 timeout: 10
